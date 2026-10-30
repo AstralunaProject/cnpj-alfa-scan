@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Playground
+    url: https://astralunaproject.github.io/cnpj-alfa-scan/
+    about: Teste um trecho de código no navegador antes de abrir a issue.

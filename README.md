@@ -136,7 +136,7 @@ O cálculo é o mesmo do CNPJ numérico (módulo 11, pesos 2 a 9), com cada cara
 - A análise é por padrões de texto, linha a linha, não por árvore sintática. Pode haver falsos positivos (use `cnpj-alfa-scan-ignore`) e casos que escapam, principalmente quando a variável não se chama `cnpj`.
 - Não analisa o banco em si: aponta a coluna nas migrações e no DDL versionados no repositório.
 
-Encontrou um caso que deveria ser detectado, ou um falso positivo? [Abra uma issue](https://github.com/AstralunaProject/cnpj-alfa-scan/issues) com o trecho de código.
+Encontrou um caso que deveria ser detectado, ou um falso positivo? [Abra uma issue](https://github.com/AstralunaProject/cnpj-alfa-scan/issues/new/choose) com o trecho de código. Para mexer nas regras, veja o [CONTRIBUTING](CONTRIBUTING.md).
 
 ## Desenvolvimento
 

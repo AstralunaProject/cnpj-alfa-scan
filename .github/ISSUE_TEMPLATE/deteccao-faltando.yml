@@ -1,0 +1,24 @@
+name: "Caso não detectado"
+description: "Um trecho que quebra com o CNPJ alfanumérico e não foi apontado."
+labels: [nova-regra]
+body:
+  - type: textarea
+    id: codigo
+    attributes:
+      label: "Trecho de código"
+      description: "O código que deveria ser apontado. Remova dados sensíveis."
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: linguagem
+    attributes:
+      label: "Linguagem ou framework"
+      placeholder: "ex.: Delphi, Laravel, Django, Spring"
+    validations:
+      required: true
+  - type: textarea
+    id: motivo
+    attributes:
+      label: "Por que quebra"
+      description: "O que acontece com um CNPJ como 12.ABC.345/01DE-35."

@@ -1,0 +1,31 @@
+name: "Falso positivo"
+description: "O cnpj-alfa-scan apontou um problema em código que está correto."
+labels: [falso-positivo]
+body:
+  - type: input
+    id: regra
+    attributes:
+      label: "Regra"
+      description: "Id que aparece na saída, ex.: CA006."
+      placeholder: "CA006"
+    validations:
+      required: true
+  - type: textarea
+    id: codigo
+    attributes:
+      label: "Trecho de código"
+      description: "As linhas apontadas, com algumas linhas em volta. Remova dados sensíveis."
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: motivo
+    attributes:
+      label: "Por que está correto"
+    validations:
+      required: true
+  - type: input
+    id: versao
+    attributes:
+      label: "Versão"
+      description: "Saída de `npx cnpj-alfa-scan --version`."
