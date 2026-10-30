@@ -1,6 +1,7 @@
 # cnpj-alfa-scan
 
 [![CI](https://github.com/AstralunaProject/cnpj-alfa-scan/actions/workflows/ci.yml/badge.svg)](https://github.com/AstralunaProject/cnpj-alfa-scan/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/cnpj-alfa-scan.svg)](https://www.npmjs.com/package/cnpj-alfa-scan)
 [![Licença: MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-blue.svg)](LICENSE)
 
 **Encontra no seu código o que vai quebrar com o CNPJ alfanumérico.**
@@ -9,23 +10,7 @@ Desde julho de 2026 a Receita Federal emite CNPJs com letras (IN RFB nº 2.229/2
 
 O `cnpj-alfa-scan` varre o repositório e aponta cada um desses pontos, com o arquivo, a linha e a correção.
 
-```console
-$ npx cnpj-alfa-scan .
-
-db/schema.sql:4:3  erro   CA006  CNPJ declarado com tipo numérico
-    cnpj BIGINT NOT NULL UNIQUE,
-    → Use texto: CHAR(14)/VARCHAR(14) no banco, string no código.
-
-src/validacao.js:2:24  erro   CA004  Remoção de tudo que não é dígito
-    return cnpj.replace(/\D/g, "");
-    → Remova só a pontuação: valor.replace(/[.\/-]/g, "").toUpperCase().
-
-src/Cadastro.tsx:14:9  erro   CA007  Campo de CNPJ com input numérico
-    type="number"
-    → Use type="text" com autocapitalize="characters" e maxlength="18".
-
-20 erros, 2 avisos em 6 arquivos (7 arquivos analisados).
-```
+![cnpj-alfa-scan rodando no terminal e apontando 4 erros: coluna BIGINT, input type=number, replace(/\D/g) e regex \d{14}](https://raw.githubusercontent.com/AstralunaProject/cnpj-alfa-scan/main/assets/demo.gif)
 
 **[Teste no navegador →](https://astralunaproject.github.io/cnpj-alfa-scan/)** Cole um trecho de código e veja o resultado; nada sai do seu computador.
 
