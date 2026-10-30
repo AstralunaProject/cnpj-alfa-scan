@@ -1,5 +1,5 @@
 name: cnpj-alfa-scan
-description: Encontra no código o que vai quebrar com o CNPJ alfanumérico e anota no pull request.
+description: "Encontra no código o que vai quebrar com o CNPJ alfanumérico e anota no pull request."
 author: AstralunaProject
 branding:
   icon: alert-triangle
@@ -7,25 +7,25 @@ branding:
 
 inputs:
   path:
-    description: Caminhos a analisar, separados por espaço ou quebra de linha.
+    description: "Caminhos a analisar, separados por espaço ou quebra de linha."
     default: "."
   fail-on:
-    description: Severidade mínima que falha o job (error, warning ou none).
+    description: "Severidade mínima que falha o job (error, warning ou none)."
     default: error
   ignore:
-    description: Globs a ignorar, um por linha (ex.: test/**).
+    description: "Globs a ignorar, um por linha (ex.: test/**)."
     default: ""
   sarif:
-    description: Caminho para gravar um relatório SARIF (para github/codeql-action/upload-sarif). Vazio não grava.
+    description: "Caminho para gravar um relatório SARIF (para github/codeql-action/upload-sarif). Vazio não grava."
     default: ""
 
 outputs:
   errors:
-    description: Quantidade de achados com severidade erro.
+    description: "Quantidade de achados com severidade erro."
   warnings:
-    description: Quantidade de achados com severidade aviso.
+    description: "Quantidade de achados com severidade aviso."
   sarif-file:
-    description: Caminho do SARIF gravado, quando solicitado.
+    description: "Caminho do SARIF gravado, quando solicitado."
 
 runs:
   using: node24
