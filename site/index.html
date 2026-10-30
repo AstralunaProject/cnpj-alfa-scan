@@ -3,14 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>cnpj-alfa-scan</title>
-  <meta name="description" content="Cole seu código e veja o que quebra com o CNPJ alfanumérico. Tudo roda no navegador.">
+  <title>Validador de CNPJ alfanumérico e scanner de código | cnpj-alfa-scan</title>
+  <meta name="description" content="Valide CNPJ alfanumérico e descubra o que quebra no seu código: BIGINT, parseInt, regex \d{14}, máscaras e input numérico. Grátis, open source, roda no navegador.">
+  <link rel="canonical" href="https://astralunaproject.github.io/cnpj-alfa-scan/">
+  <meta name="author" content="AstralunaProject">
+  <meta name="theme-color" content="#b4540a">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="cnpj-alfa-scan">
+  <meta property="og:title" content="CNPJ alfanumérico: o que vai quebrar no seu código?">
+  <meta property="og:description" content="Cole seu código e veja na hora onde o CNPJ com letras quebra o sistema. Validador de CNPJ alfanumérico incluído. Nada sai do navegador.">
+  <meta property="og:url" content="https://astralunaproject.github.io/cnpj-alfa-scan/">
+  <meta property="og:image" content="https://astralunaproject.github.io/cnpj-alfa-scan/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "cnpj-alfa-scan",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web, Linux, macOS, Windows",
+    "description": "Scanner de código e validador de CNPJ alfanumérico. Encontra colunas BIGINT, parseInt, regex \\d{14}, máscaras e campos numéricos que quebram com o novo CNPJ.",
+    "url": "https://astralunaproject.github.io/cnpj-alfa-scan/",
+    "downloadUrl": "https://www.npmjs.com/package/cnpj-alfa-scan",
+    "codeRepository": "https://github.com/AstralunaProject/cnpj-alfa-scan",
+    "license": "https://opensource.org/licenses/MIT",
+    "inLanguage": "pt-BR",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
+    "author": { "@type": "Organization", "name": "AstralunaProject", "url": "https://github.com/AstralunaProject" }
+  }
+  </script>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>cnpj-alfa-scan</h1>
+    <h1>cnpj-alfa-scan <span class="sub">validador e scanner de CNPJ alfanumérico</span></h1>
     <p>Cole um trecho de código e veja o que quebra com o <strong>CNPJ alfanumérico</strong>. Nada sai do seu navegador.</p>
     <nav>
       <a href="https://github.com/AstralunaProject/cnpj-alfa-scan">GitHub</a>
@@ -41,6 +71,22 @@
       <p id="validade" role="status" aria-live="polite"></p>
     </section>
   </main>
+
+  <section class="faq" aria-labelledby="titulo-faq">
+    <h2 id="titulo-faq">Perguntas frequentes sobre o CNPJ alfanumérico</h2>
+
+    <h3>O que é o CNPJ alfanumérico?</h3>
+    <p>É o novo formato do CNPJ, emitido pela Receita Federal desde julho de 2026 (IN RFB nº 2.229/2024). Continua com 14 caracteres, mas os 12 primeiros podem ter letras maiúsculas e números, como <code>12.ABC.345/01DE-35</code>. Os dois últimos, os dígitos verificadores, continuam numéricos. Os CNPJs já existentes não mudam.</p>
+
+    <h3>Qual a regex para validar o CNPJ alfanumérico?</h3>
+    <p>Sem máscara: <code>/^[A-Z0-9]{12}\d{2}$/</code>. Com máscara opcional: <code>/^[A-Z0-9]{2}\.?[A-Z0-9]{3}\.?[A-Z0-9]{3}\/?[A-Z0-9]{4}-?\d{2}$/</code>. A regex só confere o formato; o dígito verificador precisa ser calculado.</p>
+
+    <h3>Como calcular o dígito verificador do CNPJ alfanumérico?</h3>
+    <p>O cálculo continua sendo o módulo 11 com pesos de 2 a 9. A diferença é o valor de cada caractere: o código ASCII menos 48. Assim, <code>0</code> a <code>9</code> valem 0 a 9 e <code>A</code> a <code>Z</code> valem 17 a 42. Se o resto da divisão por 11 for menor que 2, o dígito é 0; caso contrário, é 11 menos o resto.</p>
+
+    <h3>O que quebra no meu sistema?</h3>
+    <p>Tudo que trata o CNPJ como número: coluna <code>BIGINT</code> ou <code>NUMERIC</code>, <code>parseInt(cnpj)</code>, limpeza com <code>replace(/\D/g, "")</code>, validação com <code>/^\d{14}$/</code> ou <code>isdigit()</code>, <code>&lt;input type="number"&gt;</code> e máscaras como <code>99.999.999/9999-99</code>. O scanner acima encontra esses pontos; para o projeto inteiro, rode <code>npx cnpj-alfa-scan .</code>.</p>
+  </section>
 
   <footer>
     <p>MIT · <a href="https://github.com/AstralunaProject">AstralunaProject</a></p>

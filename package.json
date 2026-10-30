@@ -1,11 +1,11 @@
 {
   "name": "cnpj-alfa-scan",
-  "version": "0.1.0",
-  "description": "Encontra no seu código o que vai quebrar com o CNPJ alfanumérico.",
+  "version": "0.1.1",
+  "description": "Validador de CNPJ alfanumérico e scanner que encontra no seu código o que vai quebrar com o novo CNPJ (colunas BIGINT, parseInt, regex e máscaras).",
   "type": "module",
   "author": "AstralunaProject",
   "license": "MIT",
-  "homepage": "https://github.com/AstralunaProject/cnpj-alfa-scan#readme",
+  "homepage": "https://astralunaproject.github.io/cnpj-alfa-scan/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AstralunaProject/cnpj-alfa-scan.git"
@@ -16,11 +16,20 @@
   "keywords": [
     "cnpj",
     "cnpj-alfanumerico",
+    "alphanumeric-cnpj",
+    "validar-cnpj",
+    "validador-cnpj",
+    "cnpj-validator",
+    "digito-verificador",
     "receita-federal",
+    "brasil",
+    "brazil",
     "linter",
     "static-analysis",
     "sarif",
-    "brasil"
+    "semgrep",
+    "github-action",
+    "cli"
   ],
   "bin": {
     "cnpj-alfa-scan": "bin/cnpj-alfa-scan.js"

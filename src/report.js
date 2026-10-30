@@ -5,7 +5,7 @@ import { REGRAS } from "./rules.js";
  * @typedef {{ achados: Achado[], arquivosAnalisados: number }} Resultado
  */
 
-const VERSAO = "0.1.0";
+const VERSAO = "0.1.1";
 const REPOSITORIO = "https://github.com/AstralunaProject/cnpj-alfa-scan";
 
 /** @param {boolean} ativo */

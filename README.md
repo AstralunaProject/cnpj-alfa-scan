@@ -131,6 +131,27 @@ formatarCnpj("12abc34501de35");    // "12.ABC.345/01DE-35"
 
 O cálculo é o mesmo do CNPJ numérico (módulo 11, pesos 2 a 9), com cada caractere valendo seu código ASCII menos 48: `0`–`9` valem 0–9 e `A`–`Z` valem 17–42. Os dois dígitos verificadores continuam numéricos.
 
+## Perguntas frequentes
+
+### O que é o CNPJ alfanumérico?
+
+É o novo formato do CNPJ, emitido pela Receita Federal desde julho de 2026 (IN RFB nº 2.229/2024). Continua com 14 caracteres, mas os 12 primeiros podem ter letras maiúsculas e números, como `12.ABC.345/01DE-35`. Os dois dígitos verificadores continuam numéricos. Os CNPJs já existentes não mudam.
+
+### Qual a regex para validar o CNPJ alfanumérico?
+
+Sem máscara: `/^[A-Z0-9]{12}\d{2}$/`. Com máscara opcional: `/^[A-Z0-9]{2}\.?[A-Z0-9]{3}\.?[A-Z0-9]{3}\/?[A-Z0-9]{4}-?\d{2}$/`. A regex só confere o formato; para o dígito verificador, use `validarCnpj` (abaixo).
+
+### Como validar CNPJ alfanumérico em JavaScript ou TypeScript?
+
+```js
+import { validarCnpj } from "cnpj-alfa-scan/cnpj";
+validarCnpj("12.ABC.345/01DE-35"); // true
+```
+
+### Como meu banco de dados deve guardar o CNPJ?
+
+Como texto: `CHAR(14)` sem máscara ou `VARCHAR(18)` com máscara. Colunas `BIGINT`, `NUMERIC` ou `INTEGER` não comportam letras; o scanner aponta essas colunas nas migrações e no DDL.
+
 ## Limitações
 
 - A análise é por padrões de texto, linha a linha, não por árvore sintática. Pode haver falsos positivos (use `cnpj-alfa-scan-ignore`) e casos que escapam, principalmente quando a variável não se chama `cnpj`.
@@ -147,6 +168,10 @@ npm run site    # gera o playground em _site/
 ```
 
 As regras ficam em [`src/rules.js`](src/rules.js). Ao alterar uma regra, inclua casos que ela detecta e casos que ignora em [`test/regras.test.js`](test/regras.test.js), e rode `npm run semgrep` para regenerar `rules/semgrep.yml`.
+
+## In English
+
+**cnpj-alfa-scan** finds code that will break with Brazil's new alphanumeric CNPJ (company tax ID), issued since July 2026: numeric DB columns, `parseInt`, `\d{14}` regexes, digit-only masks and number inputs. CLI, GitHub Action, Semgrep rules and a reference validator. Run `npx cnpj-alfa-scan .` or try the [browser playground](https://astralunaproject.github.io/cnpj-alfa-scan/).
 
 ## Licença
 
