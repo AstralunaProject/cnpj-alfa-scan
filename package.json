@@ -1,0 +1,52 @@
+{
+  "name": "cnpj-alfa-scan",
+  "version": "0.1.0",
+  "description": "Encontra no seu código o que vai quebrar com o CNPJ alfanumérico.",
+  "type": "module",
+  "author": "AstralunaProject",
+  "license": "MIT",
+  "homepage": "https://github.com/AstralunaProject/cnpj-alfa-scan#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AstralunaProject/cnpj-alfa-scan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AstralunaProject/cnpj-alfa-scan/issues"
+  },
+  "keywords": [
+    "cnpj",
+    "cnpj-alfanumerico",
+    "receita-federal",
+    "linter",
+    "static-analysis",
+    "sarif",
+    "brasil"
+  ],
+  "bin": {
+    "cnpj-alfa-scan": "bin/cnpj-alfa-scan.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./cnpj": "./src/cnpj.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "rules/semgrep.yml"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "test": "node --test test/*.test.js",
+    "semgrep": "node scripts/semgrep.js",
+    "site": "node scripts/site.js",
+    "scan": "node bin/cnpj-alfa-scan.js --ignore \"test/**\" --ignore \"examples/**\" --ignore \"rules/**\" --ignore \"site/**\" --ignore \"src/rules.js\"",
+    "check": "npm run typecheck && npm test && npm run semgrep -- --check && npm run scan"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4",
+    "typescript": "^7.0.2"
+  }
+}

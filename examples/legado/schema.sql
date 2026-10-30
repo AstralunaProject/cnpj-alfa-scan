@@ -1,0 +1,10 @@
+CREATE TABLE empresa (
+  id SERIAL PRIMARY KEY,
+  razao_social VARCHAR(150) NOT NULL,
+  cnpj BIGINT NOT NULL UNIQUE,
+  cnpj_matriz NUMERIC(14) NULL
+);
+
+ALTER TABLE fornecedor ALTER COLUMN cnpj TYPE bigint;
+
+SELECT * FROM empresa WHERE CAST(cnpj AS BIGINT) = 11222333000181;
