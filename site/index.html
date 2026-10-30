@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>cnpj-alfa-scan</title>
+  <meta name="description" content="Cole seu código e veja o que quebra com o CNPJ alfanumérico. Tudo roda no navegador.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>cnpj-alfa-scan</h1>
+    <p>Cole um trecho de código e veja o que quebra com o <strong>CNPJ alfanumérico</strong>. Nada sai do seu navegador.</p>
+    <nav>
+      <a href="https://github.com/AstralunaProject/cnpj-alfa-scan">GitHub</a>
+      <code>npx cnpj-alfa-scan .</code>
+    </nav>
+  </header>
+
+  <main>
+    <section class="editor">
+      <label for="codigo">Código</label>
+      <textarea id="codigo" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+      <div class="acoes">
+        <button type="button" id="exemplo">Carregar exemplo</button>
+        <button type="button" id="limpar">Limpar</button>
+      </div>
+    </section>
+
+    <section class="resultado" aria-labelledby="titulo-resultado">
+      <h2 id="titulo-resultado">Resultado</h2>
+      <p id="resumo" role="status" aria-live="polite"></p>
+      <ol id="achados"></ol>
+    </section>
+
+    <section class="validador" aria-labelledby="titulo-validador">
+      <h2 id="titulo-validador">Validar um CNPJ</h2>
+      <label for="cnpj">CNPJ numérico ou alfanumérico</label>
+      <input id="cnpj" type="text" autocapitalize="characters" autocomplete="off" maxlength="18" placeholder="12.ABC.345/01DE-35">
+      <p id="validade" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>MIT · <a href="https://github.com/AstralunaProject">AstralunaProject</a></p>
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
